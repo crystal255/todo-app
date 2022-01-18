@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Link, Route, Routes, useParams} from 'react-router-dom'
-import AuthenticationService from "./AuthenticationService";
 import AuthenticatedRoute from "./AuthenticatedRoute"
 import LoginComponent from './LoginComponent'
 import HeaderComponent from './HeaderComponent'

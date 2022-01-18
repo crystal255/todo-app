@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams} from 'react-router-dom'
 
+
 // alt fix to the lecture
 function WelcomeCompopnent () {
     let {name} = useParams() ;
