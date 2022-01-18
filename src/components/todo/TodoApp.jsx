@@ -5,6 +5,10 @@ import AuthenticatedRoute from "./AuthenticatedRoute"
 import LoginComponent from './LoginComponent'
 import HeaderComponent from './HeaderComponent'
 import ListTodosComponent from "./ListTodosComponent";
+import FooterComponent from "./FooterComponent";
+import LogoutComponent from "./LogoutComponent";
+import WelcomeCompopnent from "./WelcomeComponent";
+import ErrorComponent from "./ErrorComponent";
 
 
 class TodoApp extends Component {
@@ -32,42 +36,9 @@ class TodoApp extends Component {
     }
 }
 
-class FooterComponent extends Component {
-    render() {
-        return (
-            <footer className="footer">
-                <span className="text-muted">All Rights Reserved 2030 @ Kola</span>
-            </footer>
-        )
-    }
-}
-
-class LogoutComponent extends Component {
-    render() {
-        return (
-            <>
-                <h1>You are logged out</h1>
-                <div>Thank You for Using Our App!</div>
-            </>
-        )
-    }
-}
 
 
-// alt fix to the lecture
-function WelcomeCompopnent () {
-    let {name} = useParams() ;
-    // using <a> will make entire page refreshed. However, doing single page app, you don't want to refresh whole page. so use <Link>
-    return (
-        <>
-            <h1>Welcome { name }!</h1> 
-            <div className="container">You can manage your todos <Link to="/todos">here</Link>.</div>
-        </>)
-}
 
-function ErrorComponent() {
-    return <div>An Error Occurred. Please contact website support team. </div>
-}
 
 // function ShowInvalidCredentials(props){
 //     if (props.hasLoginFailed) {
