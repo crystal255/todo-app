@@ -10,7 +10,15 @@ function WelcomeCompopnent () {
         <>
             <h1>Welcome { name }!</h1> 
             <div className="container">You can manage your todos <Link to="/todos">here</Link>.</div>
-        </>)
+            <div className="container">
+                Click here to get a customized message.
+                <button 
+                    className="btn btn-success">Get Welcome Message</button>
+            </div>
+        </>) ;
+    
 }
+
+
 
 export default WelcomeCompopnent
