@@ -1,17 +1,20 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Link, Route, Routes, useParams} from 'react-router-dom'
+import {BrowserRouter as Router,  Route, Routes} from 'react-router-dom'
 import AuthenticatedRoute from "./AuthenticatedRoute"
 import LoginComponent from './LoginComponent'
 import HeaderComponent from './HeaderComponent'
 import ListTodosComponent from "./ListTodosComponent";
 import FooterComponent from "./FooterComponent";
 import LogoutComponent from "./LogoutComponent";
-import WelcomeCompopnent from "./WelcomeComponent";
+import WelcomeComponent from "./WelcomeComponent";
 import ErrorComponent from "./ErrorComponent";
+
+import withParams from "./withParams.jsx"
 
 
 class TodoApp extends Component {
     render() {
+        const WelcomeComponentWithParams = withParams(WelcomeComponent);
         return (
             <div className="TodoApp">
                 
@@ -19,7 +22,7 @@ class TodoApp extends Component {
                     <HeaderComponent/>
                     
                     <Routes>                      
-                        <Route path="/welcome/:name" element={<AuthenticatedRoute><WelcomeCompopnent/></AuthenticatedRoute>} />
+                        <Route path="/welcome/:name" element={<AuthenticatedRoute><WelcomeComponentWithParams /></AuthenticatedRoute>} />
                         <Route path="/todos" element={<AuthenticatedRoute><ListTodosComponent/></AuthenticatedRoute>} />  
                         <Route path="/" element={<LoginComponent/>} />
                         <Route path="/login" element={<LoginComponent/>} />
