@@ -7,6 +7,11 @@ class WelcomeComponent extends Component {
     constructor(props) {
         super(props)
         this.retrieveWelcomeMessage = this.retrieveWelcomeMessage.bind(this)
+        this.state = {
+            welcomeMessage : ''
+        }
+        this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
+        this.hanelError = this.hanelError.bind(this)
     }
     // using <a> will make entire page refreshed. However, doing single page app, you don't want to refresh whole page. so use <Link>
     render(){
@@ -19,12 +24,33 @@ class WelcomeComponent extends Component {
                     <button onClick={this.retrieveWelcomeMessage}
                         className="btn btn-success">Get Welcome Message</button>
                 </div>
+                <div className="container">
+                    {this.state.welcomeMessage}
+                </div>
             </>)
     }
 
     retrieveWelcomeMessage(){
-        HelloWorldService.executeHelloWorldService();
+        // HelloWorldService.executeHelloWorldService()
+        // .then(response => this.handleSuccessfulResponse(response))
+
+        // HelloWorldService.executeHelloWorldBeanService()
+        // .then(response => this.handleSuccessfulResponse(response))
+
+        HelloWorldService.executeHelloWorldPathVariableService(this.props.params.name )
+        .then(response => this.handleSuccessfulResponse(response))
+        .catch(error => this.hanelError(error))
     }    
+
+    handleSuccessfulResponse(response) {
+        console.log(response)
+        this.setState({welcomeMessage: response.data.message})
+    }
+
+    hanelError(error){
+        console.log(error.response)
+        this.setState({welcomeMessage: error.response.data.message})
+    }
 }
 
 export default WelcomeComponent
