@@ -70,9 +70,10 @@ class LoginComponent extends Component {
     }
 }
 
-function WithNavigate(props) {
-    let navigate = useNavigate()
-    return <LoginComponent {...props} navigate={navigate} />
-}
+// function WithNavigate(props) {
+//     let navigate = useNavigate()
+//     return <LoginComponent {...props} navigate={navigate} />
+// }
 
-export default WithNavigate
+// export default WithNavigate
+export default LoginComponent

@@ -11,7 +11,7 @@ class WelcomeComponent extends Component {
             welcomeMessage : ''
         }
         this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
-        this.hanelError = this.hanelError.bind(this)
+        this.handleError = this.handleError.bind(this)
     }
     // using <a> will make entire page refreshed. However, doing single page app, you don't want to refresh whole page. so use <Link>
     render(){
@@ -39,7 +39,7 @@ class WelcomeComponent extends Component {
 
         HelloWorldService.executeHelloWorldPathVariableService(this.props.params.name )
         .then(response => this.handleSuccessfulResponse(response))
-        .catch(error => this.hanelError(error))
+        .catch(error => this.handleError(error))
     }    
 
     handleSuccessfulResponse(response) {
@@ -47,7 +47,7 @@ class WelcomeComponent extends Component {
         this.setState({welcomeMessage: response.data.message})
     }
 
-    hanelError(error){
+    handleError(error){
         console.log(error.response)
         this.setState({welcomeMessage: error.response.data.message})
     }
